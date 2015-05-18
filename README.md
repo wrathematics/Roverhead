@@ -1,7 +1,7 @@
 
 
 
-# R Overhead
+# Measuring R Overhead
 
 If one uses R strictly as an 'interface language' to high performance
 compiled code, the overhead is quite small.
