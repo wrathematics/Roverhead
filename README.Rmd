@@ -1,0 +1,41 @@
+```{r, echo=FALSE, message=FALSE}
+invisible(system("make"))
+```
+
+
+# R Overhead
+
+If one uses R strictly as an 'interface language' to high performance
+compiled code, the overhead is quite small.
+
+To prove this, let us compute a matrix-matrix multiply via the BLAS
+call `dgemm`.  From pure C:
+
+```{r, engine='bash', comment='$', echo=TRUE}
+time ./dgemm
+```
+
+and from R:
+
+```{r, engine='bash', comment='$', echo=TRUE}
+time r dgemm.r
+```
+
+
+These values are nearly identical.  Note that even so, the R
+version has additional interpreter overhead at a one-time cost,
+and in general a slight overhead for each function evaluation.
+
+
+
+# Machine
+
+All tests performed using:
+
+* R 3.2.0
+* r ('littler') version 0.2.3
+* OpenBLAS with `OMP_NUM_THREADS=4`
+* gcc 4.9.1
+* Core i5-2500K CPU @ 3.30GHz
+
+
